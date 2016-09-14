@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'devise_token_auth' # Token based authentication for Rails JSON APIs
 gem 'omniauth' # required for devise_token_auth
+gem 'pundit'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -53,5 +54,16 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #debug
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rails'
+  gem 'launchy'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'awesome_print'
+  gem 'quiet_assets'
 end
 

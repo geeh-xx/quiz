@@ -9,12 +9,12 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     exam = set_exam
-    questions = Question.first(10,:order => "RANDOM()")
+    questions = Question.order("RANDOM()").limit(10)
 
     questions.each do |question|
       item = exam.items.build(:question => question)
       if item.save
-        render json: item, status: 201 ,location: item
+        render json: item, status: 201
       else
         render json: item.errors, status: 422
       end

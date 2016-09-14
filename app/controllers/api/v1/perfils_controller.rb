@@ -12,9 +12,9 @@ class Api::V1::PerfilsController < ApplicationController
 
   def create
     perfil = Perfil.new(perfil_params)
-
+    perfil.user = User.find(current_user.id)
     if perfil.save
-      render json: perfil, status: 201 ,location: perfil
+      render json: perfil, status: 201
     else
       render json: perfil.errors, status: 422
     end

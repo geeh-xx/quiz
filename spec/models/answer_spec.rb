@@ -10,30 +10,14 @@ RSpec.describe Answer, type: :model do
 
     it "Answer valid?" do
       answer = Answer.new
-      answer.one = "1"
-      answer.two = "2"
-      answer.three = "3"
-      answer.four = "4"
-      answer.five = "5"
-      answer.six = "6"
-      answer.seven = "7"
-      answer.eight = "8"
-      answer.nine = "9"
-      answer.ten = "10"
+      answer.answer = "xablau"
+      answer.number = 2
       expect(answer.valid?).to be_truthy
     end
 
     it "Answer invalid?" do
       answer = Answer.new
-      answer.one = "1"
-      answer.two = "2"
-      answer.three = "3"
-      answer.five = "5"
-      answer.six = "6"
-      answer.seven = "7"
-      answer.eight = "8"
-      answer.nine = "9"
-      answer.ten = "10"
+      answer.answer = "xablau"
       expect(answer.valid?).to be_falsey
     end
   end

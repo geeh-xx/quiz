@@ -9,7 +9,7 @@ class Api::V1::ItemAnswersController < ApplicationController
 
   def create
     exam = set_exam
-    answer = Answer.find(params[:answer_id])
+    answer = Answer.create(answer: params[:answer], number: params[:answer_number])
     item_answer = exam.item_answers.build(:answer => answer)
     if item_answer.save
       render json: item_answer, status: 201

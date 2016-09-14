@@ -9,4 +9,33 @@ Things you may want to cover:
 
 * Rails version 4.2
 
+Rotas
 
+    Criação de usuario
+        /api/v1/auth?email=&password=&password_confirmation=
+
+        parameters
+            email,password,password confirmation
+
+    Login
+        /api/v1/auth?email=&password
+
+        parameters
+            email,password
+
+    Question
+        /api/v1/questions
+
+           parameters
+                title,a,b,c,d,font,category
+    Exam
+        /api/v1/exams
+
+            parameters
+                user_id
+
+    Answers
+         /api/v1/item_answers
+
+            parameters
+               exam_id,answer,answer_number

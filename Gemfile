@@ -21,15 +21,20 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+# Database
+gem 'pg'
+
+# Use for authentication
 gem 'devise'
 gem 'devise_token_auth' # Token based authentication for Rails JSON APIs
 gem 'omniauth' # required for devise_token_auth
+
+# Use for authorization
 gem 'pundit'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'pg'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -55,7 +60,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  #debug
+  # For debug
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
@@ -65,5 +70,6 @@ group :development do
   gem 'meta_request'
   gem 'awesome_print'
   gem 'quiet_assets'
+
 end
 

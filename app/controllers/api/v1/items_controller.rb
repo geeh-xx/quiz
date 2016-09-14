@@ -7,7 +7,6 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    #exam2 = set_exam
     exam = Exam.new
     questions = Question.order("RANDOM()").limit(10)
 

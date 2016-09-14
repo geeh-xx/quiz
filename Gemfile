@@ -54,6 +54,10 @@ group :development, :test do
   # Use testing pundit
   gem 'pundit-matchers', '~> 1.1.0'
 
+  # User for testing relations
+  gem 'shoulda-matchers'
+  gem 'shoulda'
+
 end
 
 group :development do

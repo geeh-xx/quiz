@@ -3,6 +3,12 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
     context "Validantion User" do
+
+      it "User relations" do
+        should have_many(:exams)
+        should have_one(:perfil)
+      end
+
       it "User Admin valid?" do
         user = User.new
         user.role = "admin"
@@ -19,15 +25,6 @@ RSpec.describe User, type: :model do
         user.password_confirmation = "123456789"
         expect(user.admin?).to be_falsey
       end
-
-      # it "Question invalid?" do
-      #   question = Question.new
-      #   question.a = "Xablau a"
-      #   question.b = "Xablau b"
-      #   question.c = "Xablau c"
-      #   question.d = "Xablau d"
-      #   expect(question.valid?).to be_falsey
-      # end
 
     end
 

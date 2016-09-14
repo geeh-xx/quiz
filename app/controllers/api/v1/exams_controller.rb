@@ -25,7 +25,7 @@ class Api::V1::ExamsController < ApplicationController
   def create
     exam = set_exam
     session[:exam_id] = nil
-    render json: item, status: 201
+    render json: exam, status: 201
   end
 
   def destroy

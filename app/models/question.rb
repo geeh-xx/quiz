@@ -1,5 +1,4 @@
 class Question < ActiveRecord::Base
-
   validates :enunciaton, :a ,:b, :c, :d, presence: true
 
   has_many :items, dependent: :destroy

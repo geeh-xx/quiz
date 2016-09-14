@@ -2,13 +2,13 @@ class Api::V1::QuestionsController < ApplicationController
   before_action :autheticate_user!
 
   def index
-    questions = Question.all
+    @questions = Question.all
     render json: questions, status: 200
-    authorize questions
+    authorize @questions
   end
 
   def create
-    question = Question.new(question_params)
+    @question = Question.new(question_params)
 
     if question.save
       render json: question, status: 201
@@ -16,15 +16,15 @@ class Api::V1::QuestionsController < ApplicationController
       render json: question.errors, status: 422
     end
 
-    authorize question
+    authorize @question
   end
 
   def destroy
-    question = Question.find(params[:id])
-    question.destroy
+    @question = Question.find(params[:id])
+    @question.destroy
     render nothing: true, status: 204
 
-    authorize question
+    authorize @question
   end
 
   private

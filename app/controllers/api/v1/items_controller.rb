@@ -1,6 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
   before_action :authenticate_user!
-  include CurrentExam
 
   def index
     items = Item.all
@@ -8,7 +7,8 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    exam = set_exam
+    #exam2 = set_exam
+    exam = Exam.new
     questions = Question.order("RANDOM()").limit(10)
 
     questions.each do |question|

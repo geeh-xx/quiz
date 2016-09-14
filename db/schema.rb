@@ -11,18 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913131230) do
+ActiveRecord::Schema.define(version: 20160914111519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "exams", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "answers", force: :cascade do |t|
+    t.string   "one"
+    t.string   "two"
+    t.string   "three"
+    t.string   "four"
+    t.string   "five"
+    t.string   "six"
+    t.string   "seven"
+    t.string   "eight"
+    t.string   "nine"
+    t.string   "ten"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "active",     default: 0
+  end
+
   add_index "exams", ["user_id"], name: "index_exams_on_user_id", using: :btree
+
+  create_table "item_answers", force: :cascade do |t|
+    t.integer  "exam_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "item_answers", ["answer_id"], name: "index_item_answers_on_answer_id", using: :btree
+  add_index "item_answers", ["exam_id"], name: "index_item_answers_on_exam_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.integer  "question_id"
@@ -87,6 +113,8 @@ ActiveRecord::Schema.define(version: 20160913131230) do
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
   add_foreign_key "exams", "users"
+  add_foreign_key "item_answers", "answers"
+  add_foreign_key "item_answers", "exams"
   add_foreign_key "items", "exams"
   add_foreign_key "items", "questions"
   add_foreign_key "perfils", "users"

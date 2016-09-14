@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160914111519) do
   add_index "perfils", ["user_id"], name: "index_perfils_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "enunciaton"
+    t.string   "title"
     t.string   "a"
     t.string   "b"
     t.string   "c"

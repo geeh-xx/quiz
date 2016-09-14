@@ -1,7 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :enunciaton
+      t.string :title
       t.string :a
       t.string :b
       t.string :c

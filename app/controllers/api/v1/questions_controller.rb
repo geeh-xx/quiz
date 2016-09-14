@@ -29,7 +29,7 @@ class Api::V1::QuestionsController < ApplicationController
 
   private
     def question_params
-      params_require(:question).permit :enunciation, :a, :b, :c, :d, :font, :category
+      params_require(:question).permit :title, :a, :b, :c, :d, :font, :category
     end
 
 end

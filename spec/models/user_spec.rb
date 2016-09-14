@@ -1,27 +1,34 @@
-class User_spec
-  require 'spec_helper'
+require 'rails_helper'
 
-  # describe '/api/vi/auth', :type => :api do
-  #
-  #   let(:url) { "/api/v1/auth" }
-  #
-  #   it "create a user" do
-  #
-  #     # método HTTP sobre a URL especificada
-  #     post "#{url}.json",  :auth => {
-  #         :email => "teste@teste.com.br",
-  #         :password => 12345678,
-  #         :password_confirmation => 12345678
-  #     }
-  #
-  #     user_json = JSON.parse last_response.body
-  #
-  #     # Id deve vir populado
-  #     user_json["id"].should be
-  #     last_response.status.should eql(201)
-  #   end
-  #
-  # end
+RSpec.describe User, type: :model do
 
+    context "Validantion User" do
+      it "User Admin valid?" do
+        user = User.new
+        user.role = "admin"
+        user.email = "teste@teste.com.br"
+        user.password = "123456789"
+        user.password_confirmation = "123456789"
+        expect(user.admin?).to be_truthy
+      end
+
+      it "normal user valid?" do
+        user = User.new
+        user.email = "teste@teste.com.br"
+        user.password = "123456789"
+        user.password_confirmation = "123456789"
+        expect(user.admin?).to be_falsey
+      end
+
+      # it "Question invalid?" do
+      #   question = Question.new
+      #   question.a = "Xablau a"
+      #   question.b = "Xablau b"
+      #   question.c = "Xablau c"
+      #   question.d = "Xablau d"
+      #   expect(question.valid?).to be_falsey
+      # end
+
+    end
 
 end

@@ -51,6 +51,9 @@ group :development, :test do
   # Use rspec for testing
   gem 'rspec-rails', '~> 3.5'
 
+  # Use testing pundit
+  gem 'pundit-matchers', '~> 1.1.0'
+
 end
 
 group :development do

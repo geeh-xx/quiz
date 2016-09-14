@@ -11,10 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912142007) do
+ActiveRecord::Schema.define(version: 20160913131230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "exams", ["user_id"], name: "index_exams_on_user_id", using: :btree
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "exam_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "items", ["exam_id"], name: "index_items_on_exam_id", using: :btree
+  add_index "items", ["question_id"], name: "index_items_on_question_id", using: :btree
+
+  create_table "perfils", force: :cascade do |t|
+    t.string   "name"
+    t.string   "birth"
+    t.string   "cpf"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "perfils", ["user_id"], name: "index_perfils_on_user_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "enunciaton"
+    t.string   "a"
+    t.string   "b"
+    t.string   "c"
+    t.string   "d"
+    t.string   "font"
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",                            null: false
@@ -32,19 +73,21 @@ ActiveRecord::Schema.define(version: 20160912142007) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "name"
     t.string   "nickname"
     t.string   "image"
     t.string   "email"
-    t.string   "cpf"
-    t.string   "birth"
     t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role",                   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
+  add_foreign_key "exams", "users"
+  add_foreign_key "items", "exams"
+  add_foreign_key "items", "questions"
+  add_foreign_key "perfils", "users"
 end
